@@ -42,16 +42,6 @@ public class StatsdLoggerImpl implements StatsdLogger, Serializable {
         return StatsdLoggerFactory.getLogger(getName());
     }
 
-    @Override
-    public StatsdCounter counter() {
-        return this;
-    }
-
-    @Override
-    public StatsdTimer timer() {
-        return this;
-    }
-
     //
     // Info level
     //

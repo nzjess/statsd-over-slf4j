@@ -8,8 +8,8 @@ package org.ubercraft.statsd;
 public class StatsdLoggerMain {
 
     // some stats
-    private static final StatsdCounter counterStat = StatsdLoggerFactory.getLogger("statsd.test.counter").counter();
-    private static final StatsdTimer timerStat = StatsdLoggerFactory.getLogger("statsd.test.timer").timer();
+    private static final StatsdCounter counterStat = StatsdLoggerFactory.getLogger("statsd.test.counter");
+    private static final StatsdTimer timerStat = StatsdLoggerFactory.getLogger("statsd.test.timer");
 
     public static void main(String... args) throws Exception {
         // log some stats
