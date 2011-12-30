@@ -27,7 +27,7 @@ public class StatsdLoggerImpl implements StatsdLogger, Serializable {
 
     private static final long serialVersionUID = 6548797032077199054L;
 
-    private final Logger logger;
+    protected final Logger logger;
 
     public StatsdLoggerImpl(Logger logger) {
         this.logger = logger;
