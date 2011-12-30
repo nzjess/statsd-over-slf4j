@@ -1,0 +1,26 @@
+
+Introduction
+------------
+
+Statsd over SLF4J is a Java statsd client, combined with an SLF4J compatible logging facility.
+
+The idea is that SLF4J logger names and statsd keys are both dot separated namespaces, so why not use them together.
+At the same time, we gain control over our statsd stats logging via familiar logging configuration files. A logback
+logging appender implementation is provided.
+
+* SLF4J
+    - http://www.slf4j.org
+* Statsd
+    - https://github.com/etsy/statsd
+    
+Usage
+-------------
+
+There are examples in the code under src/test.
+
+Building
+-------------
+
+Uses Maven. From the root of the project dir, type:
+ 
+$ mvn install

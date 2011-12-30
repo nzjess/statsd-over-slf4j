@@ -1,0 +1,24 @@
+<configuration>
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%d{yyyy-MM-dd} %d{HH:mm:ss}] [%thread %level %logger] %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="STATSD" class="org.ubercraft.statsd.StatsdLogbackAppender">
+        <host>localhost</host>
+        <port>8125</port>
+        <queueSize>1000</queueSize>
+        <queueOfferTimeout>0</queueOfferTimeout>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+    <logger name="statsd" level="TRACE"> <!-- additivity="false" -->
+        <appender-ref ref="STATSD"/>
+    </logger>
+
+</configuration>
