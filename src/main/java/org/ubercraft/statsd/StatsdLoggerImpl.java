@@ -37,6 +37,11 @@ public class StatsdLoggerImpl implements StatsdLogger, Serializable {
         return logger.getName();
     }
 
+    @Override
+    public String toString() {
+        return "StatsdLoggerImpl[" + getName() + "]";
+    }
+
     // deserialization
     protected Object readResolve() throws ObjectStreamException {
         return StatsdLoggerFactory.getLogger(getName());
