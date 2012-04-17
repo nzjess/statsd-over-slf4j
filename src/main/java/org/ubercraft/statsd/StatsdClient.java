@@ -1,18 +1,15 @@
 package org.ubercraft.statsd;
 
+import org.slf4j.Logger;
+
 import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
-import java.net.SocketException;
-import java.net.UnknownHostException;
+import java.net.*;
 import java.nio.charset.Charset;
+import java.util.Locale;
 import java.util.Random;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
-
-import org.slf4j.Logger;
 
 /**
  * A Java statsd client. See <a href="https://github.com/etsy/statsd">https://github.com/etsy/statsd</a> for why you
@@ -226,7 +223,11 @@ public class StatsdClient {
     private boolean send(String stat, double sampleRate) {
         if (sampleRate < 1.0D) {
             if (RANDOM.nextDouble() <= sampleRate) {
-                stat = String.format(SAMPLE_RATE_FORMAT, stat, sampleRate);
+                stat = String.format(
+                        Locale.US, // To use "." in "%f" disregarding the system locale
+                        SAMPLE_RATE_FORMAT,
+                        stat,
+                        sampleRate);
                 return send(stat);
             }
             else {
