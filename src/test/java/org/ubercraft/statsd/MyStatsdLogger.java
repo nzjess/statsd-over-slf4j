@@ -19,7 +19,7 @@ public class MyStatsdLogger extends StatsdLoggerImpl {
     }
 
     @Override
-    protected String statMessage(StatsdStatType type, int value, double sampleRate) {
+    protected String statMessage(StatsdStatType type, long value, double sampleRate) {
         return "{} {} {}";
     }
 }

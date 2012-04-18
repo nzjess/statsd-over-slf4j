@@ -4,19 +4,19 @@ public interface StatsdTimer extends StatsdLoggerIBase {
 
     // Info level
 
-    void infoTime(int millis);
+    void infoTime(long millis);
 
-    void infoTime(int millis, double sampleRate);
+    void infoTime(long millis, double sampleRate);
 
     // Debug level
 
-    void debugTime(int millis);
+    void debugTime(long millis);
 
-    void debugTime(int millis, double sampleRate);
+    void debugTime(long millis, double sampleRate);
 
     // Trace level
 
-    void traceTime(int millis);
+    void traceTime(long millis);
 
-    void traceTime(int millis, double sampleRate);
+    void traceTime(long millis, double sampleRate);
 }

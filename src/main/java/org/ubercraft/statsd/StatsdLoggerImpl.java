@@ -77,17 +77,17 @@ public class StatsdLoggerImpl implements StatsdLogger, Serializable {
     }
 
     @Override
-    public void infoTime(int millis) {
+    public void infoTime(long millis) {
         infoTime(millis, 1.0);
     }
 
     @Override
-    public void infoTime(int millis, double sampleRate) {
+    public void infoTime(long millis, double sampleRate) {
         infoStat(TIMER, millis, sampleRate);
     }
 
     @Override
-    public void infoStat(StatsdStatType type, int value, double sampleRate) {
+    public void infoStat(StatsdStatType type, long value, double sampleRate) {
         if (isInfoEnabled()) logger.info( //
                 statMarker(type, value, sampleRate), //
                 statMessage(type, value, sampleRate), //
@@ -124,17 +124,17 @@ public class StatsdLoggerImpl implements StatsdLogger, Serializable {
     }
 
     @Override
-    public void debugTime(int millis) {
+    public void debugTime(long millis) {
         debugTime(millis, 1.0);
     }
 
     @Override
-    public void debugTime(int millis, double sampleRate) {
+    public void debugTime(long millis, double sampleRate) {
         debugStat(TIMER, millis, sampleRate);
     }
 
     @Override
-    public void debugStat(StatsdStatType type, int value, double sampleRate) {
+    public void debugStat(StatsdStatType type, long value, double sampleRate) {
         if (isDebugEnabled()) logger.debug( //
                 statMarker(type, value, sampleRate), //
                 statMessage(type, value, sampleRate), //
@@ -171,17 +171,17 @@ public class StatsdLoggerImpl implements StatsdLogger, Serializable {
     }
 
     @Override
-    public void traceTime(int millis) {
+    public void traceTime(long millis) {
         traceTime(millis, 1.0);
     }
 
     @Override
-    public void traceTime(int millis, double sampleRate) {
+    public void traceTime(long millis, double sampleRate) {
         traceStat(TIMER, millis, sampleRate);
     }
 
     @Override
-    public void traceStat(StatsdStatType type, int value, double sampleRate) {
+    public void traceStat(StatsdStatType type, long value, double sampleRate) {
         if (isTraceEnabled()) logger.trace( //
                 statMarker(type, value, sampleRate), //
                 statMessage(type, value, sampleRate), //
@@ -193,15 +193,15 @@ public class StatsdLoggerImpl implements StatsdLogger, Serializable {
     // (the default behaviour suits logback)
     //
 
-    protected Marker statMarker(StatsdStatType type, int value, double sampleRate) {
+    protected Marker statMarker(StatsdStatType type, long value, double sampleRate) {
         return null;
     }
 
-    protected String statMessage(StatsdStatType type, int value, double sampleRate) {
+    protected String statMessage(StatsdStatType type, long value, double sampleRate) {
         return null;
     }
 
-    protected Object[] statArgs(StatsdStatType type, int value, double sampleRate) {
+    protected Object[] statArgs(StatsdStatType type, long value, double sampleRate) {
         return new Object[] {
                 type, value, sampleRate
         };
