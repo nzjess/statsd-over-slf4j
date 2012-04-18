@@ -48,7 +48,7 @@ public class StatsdClient {
 
     public static final int DEFAULT_PORT = 8125;
 
-    private static final String COUNTER_FORMAT = "%s:%s|c";
+    private static final String COUNTER_FORMAT = "%s:%d|c";
     private static final String TIMER_FORMAT = "%s:%d|ms";
     private static final String SAMPLE_RATE_FORMAT = "%s|@%f";
 
