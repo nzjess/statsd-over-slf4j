@@ -112,13 +112,13 @@ public class StatsdLogbackAppender extends AppenderBase<ILoggingEvent> {
         Object[] args = event.getArgumentArray();
         if (args != null && args.length == 3) {
             if (args[0] instanceof StatsdStatType && //
-                    args[1] instanceof Integer && //
+                    args[1] instanceof Long && //
                     args[2] instanceof Double) {
 
                 StatsdStatType type = (StatsdStatType)args[0];
 
                 String key = event.getLoggerName();
-                int value = (Integer)args[1];
+                long value = (Long)args[1];
                 double sampleRate = (Double)args[2];
 
                 sent = client.stat(type, key, value, sampleRate);

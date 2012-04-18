@@ -208,7 +208,7 @@ public class StatsdClient {
         return stat(StatsdStatType.TIMER, key, millis, sampleRate);
     }
 
-    public boolean stat(StatsdStatType type, String key, int value, double sampleRate) {
+    public boolean stat(StatsdStatType type, String key, long value, double sampleRate) {
         String format;
         switch (type) {
             case COUNTER:
