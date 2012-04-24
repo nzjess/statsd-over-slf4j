@@ -6,5 +6,6 @@ package org.ubercraft.statsd;
 public enum StatsdStatType {
 
     COUNTER,
-    TIMER
+    TIMER,
+    GAUGE
 }

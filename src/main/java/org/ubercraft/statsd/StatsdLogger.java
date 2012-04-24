@@ -1,6 +1,6 @@
 package org.ubercraft.statsd;
 
-public interface StatsdLogger extends StatsdCounter, StatsdTimer {
+public interface StatsdLogger extends StatsdCounter, StatsdTimer, StatsdGauge {
 
     // Info level
 

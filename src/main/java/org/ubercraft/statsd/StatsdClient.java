@@ -50,6 +50,8 @@ public class StatsdClient {
 
     private static final String COUNTER_FORMAT = "%s:%d|c";
     private static final String TIMER_FORMAT = "%s:%d|ms";
+    private static final String GAUGE_FORMAT = "%s:%d|g";
+
     private static final String SAMPLE_RATE_FORMAT = "%s|@%f";
 
     private static final String CHARSET_SYS_PROP = "org.ubercraft.statsd.StatsdClient.CHARSET";
@@ -200,12 +202,16 @@ public class StatsdClient {
         return stat(StatsdStatType.COUNTER, key, count, sampleRate);
     }
 
-    public boolean time(String key, int millis) {
+    public boolean time(String key, long millis) {
         return time(key, millis, 1.0);
     }
 
-    public boolean time(String key, int millis, double sampleRate) {
+    public boolean time(String key, long millis, double sampleRate) {
         return stat(StatsdStatType.TIMER, key, millis, sampleRate);
+    }
+
+    public boolean gauge(String key, int value) {
+        return stat(StatsdStatType.GAUGE, key, value, 1.0);
     }
 
     public boolean stat(StatsdStatType type, String key, long value, double sampleRate) {
@@ -216,6 +222,9 @@ public class StatsdClient {
                 break;
             case TIMER:
                 format = TIMER_FORMAT;
+                break;
+            case GAUGE:
+                format = GAUGE_FORMAT;
                 break;
             default:
                 throw new IllegalStateException();

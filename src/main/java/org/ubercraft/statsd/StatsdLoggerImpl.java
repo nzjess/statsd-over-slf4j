@@ -1,6 +1,7 @@
 package org.ubercraft.statsd;
 
 import static org.ubercraft.statsd.StatsdStatType.COUNTER;
+import static org.ubercraft.statsd.StatsdStatType.GAUGE;
 import static org.ubercraft.statsd.StatsdStatType.TIMER;
 
 import java.io.ObjectStreamException;
@@ -87,6 +88,11 @@ public class StatsdLoggerImpl implements StatsdLogger, Serializable {
     }
 
     @Override
+    public void infoGauge(int value) {
+        infoStat(GAUGE, value, 1.0);
+    }
+
+    @Override
     public void infoStat(StatsdStatType type, long value, double sampleRate) {
         if (isInfoEnabled()) logger.info( //
                 statMarker(type, value, sampleRate), //
@@ -134,6 +140,11 @@ public class StatsdLoggerImpl implements StatsdLogger, Serializable {
     }
 
     @Override
+    public void debugGauge(int value) {
+        debugStat(GAUGE, value, 1.0);
+    }
+
+    @Override
     public void debugStat(StatsdStatType type, long value, double sampleRate) {
         if (isDebugEnabled()) logger.debug( //
                 statMarker(type, value, sampleRate), //
@@ -178,6 +189,11 @@ public class StatsdLoggerImpl implements StatsdLogger, Serializable {
     @Override
     public void traceTime(long millis, double sampleRate) {
         traceStat(TIMER, millis, sampleRate);
+    }
+
+    @Override
+    public void traceGauge(int value) {
+        traceStat(GAUGE, value, 1.0);
     }
 
     @Override

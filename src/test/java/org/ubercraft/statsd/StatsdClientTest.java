@@ -2,6 +2,7 @@ package org.ubercraft.statsd;
 
 import static org.junit.Assert.assertEquals;
 import static org.ubercraft.statsd.StatsdStatType.COUNTER;
+import static org.ubercraft.statsd.StatsdStatType.GAUGE;
 import static org.ubercraft.statsd.StatsdStatType.TIMER;
 
 import java.io.IOException;
@@ -46,6 +47,18 @@ public class StatsdClientTest {
     }
 
     @Test
+    public void testGuage() throws Exception {
+        expected = "ka.t:1|g";
+        client.gauge("ka.t", 1);
+
+        expected = "ka.p:2|g";
+        client.gauge("ka.p", 2);
+
+        expected = "ka.q:-2|g";
+        client.gauge("ka.q", -2);
+    }
+
+    @Test
     public void testStat() throws Exception {
         expected = "kc.t:3|c";
         client.stat(COUNTER, "kc.t", 3, 1.0D);
@@ -61,5 +74,8 @@ public class StatsdClientTest {
 
         expected = "kb.w:25|ms|@0.300000";
         while (!client.stat(TIMER, "kb.w", 25, 0.3D));
+
+        expected = "kc.q:5|g";
+        client.stat(GAUGE, "kc.q", 5, 1.0D);
     }
 }
