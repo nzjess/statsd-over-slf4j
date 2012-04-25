@@ -1,6 +1,6 @@
 
 Introduction
-------------
+-------------
 
 Statsd over SLF4J is a Java statsd client, combined with an SLF4J compatible logging facility.
 
@@ -12,15 +12,26 @@ logging appender implementation is provided.
     - http://www.slf4j.org
 * Statsd
     - https://github.com/etsy/statsd
-    
+
+
 Usage
--------------
+--------------
 
 There are examples in the code under src/test.
 
+
 Building
--------------
+--------------
 
 Uses Maven. From the root of the project dir, type:
  
 $ mvn install
+
+
+Maven Artifact
+--------------
+
+<dependency>
+    <groupId>org.ubercraft.statsd</groupId>
+    <artifactId>statsd-over-slf4j</artifactId>
+</dependency>
